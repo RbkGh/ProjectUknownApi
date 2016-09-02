@@ -34,6 +34,10 @@ configurations {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.security:spring-security-config')
+	compile('org.springframework.security:spring-security-web')
+	compile('io.jsonwebtoken:jjwt:0.6.0')
+
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
