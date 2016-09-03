@@ -2,6 +2,7 @@ package com.swiftpot.projectuknown.controllers;
 
 import com.swiftpot.projectuknown.model.OutgoingPayload;
 import com.swiftpot.projectuknown.model.UserLoginRequest;
+import com.swiftpot.projectuknown.support.BaseUrlHolder;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *         02-Sep-16
  */
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping(BaseUrlHolder.BASE_URL_AUTH_ENDPOINT)
 public class AuthenticationController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -1,6 +1,7 @@
 package com.swiftpot.projectuknown;
 
 import com.swiftpot.projectuknown.filter.JwtFilter;
+import com.swiftpot.projectuknown.support.BaseUrlHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -32,7 +33,7 @@ public class ProjectUknownApplication extends SpringBootServletInitializer {
 	public FilterRegistrationBean jwtFilter(){
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setFilter(new JwtFilter());
-		registrationBean.addUrlPatterns("/api/v1/main/*");
+		registrationBean.addUrlPatterns(BaseUrlHolder.BASE_URL_MAIN_ENDPOINT+"/*");
 		TypeExcludeFilter typeExcludeFilter = new TypeExcludeFilter();
 
 
