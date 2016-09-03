@@ -5,10 +5,6 @@ import org.springframework.stereotype.Component;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * 
- */
-
-/**
  * @author Ace Programmer Rbk
  *         <Rodney Kwabena Boachie at rbk.unlimited@gmail.com> on
  *         02-Sep-16

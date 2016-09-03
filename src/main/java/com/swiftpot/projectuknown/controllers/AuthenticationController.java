@@ -2,16 +2,11 @@ package com.swiftpot.projectuknown.controllers;
 
 import com.swiftpot.projectuknown.model.OutgoingPayload;
 import com.swiftpot.projectuknown.model.UserLoginRequest;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.ServletException;
-import java.util.Date;
 
 /**
  * @author Ace Programmer Rbk
