@@ -33,7 +33,7 @@ public class ProjectUknownApplication extends SpringBootServletInitializer {
 	public FilterRegistrationBean jwtFilter(){
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setFilter(new JwtFilter());
-		registrationBean.addUrlPatterns(BaseUrlHolder.BASE_URL_MAIN_ENDPOINT+"/*");
+		registrationBean.addUrlPatterns(BaseUrlHolder.BASE_URL_MAIN_ENTRY_ENDPOINT+"/*");
 		TypeExcludeFilter typeExcludeFilter = new TypeExcludeFilter();
 
 

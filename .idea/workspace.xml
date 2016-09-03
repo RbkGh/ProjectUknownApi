@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32211a24-13fb-42de-ada7-5237ebaca623" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/support/BaseUrlHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/GeneralClientController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/AuthenticationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/AuthenticationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -102,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectUknownApplication.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProjectUknownApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="76" />
+            <state vertical-scroll-proportion="0.36461127">
+              <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -124,10 +121,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneralClientController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GeneralClientController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/GeneralClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72727275">
+            <state vertical-scroll-proportion="0.0">
               <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -161,7 +158,12 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-              <folding />
+              <folding>
+                <element signature="e#0#2298#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#2128#2129#0" expanded="false" />
+                <element signature="e#2142#2143#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -688,10 +690,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/filter/JwtFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/model/UserLoginRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/model/OutgoingPayload.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/AuthenticationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/support/BaseUrlHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/GeneralClientController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java" />
       </list>
     </option>
   </component>
@@ -1116,7 +1118,7 @@
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SwiftPotAlertSMS" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -1471,12 +1473,12 @@
       <workItem from="1472754833461" duration="8844000" />
       <workItem from="1472822114707" duration="155000" />
       <workItem from="1472822352819" duration="2949000" />
-      <workItem from="1472896108174" duration="1353000" />
+      <workItem from="1472896108174" duration="1653000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25810000" />
+    <option name="totallyTimeSpent" value="26110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
@@ -1491,7 +1493,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32663316" sideWeight="0.48184568" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32718122" sideWeight="0.48184568" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33585477" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1563,7 +1565,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#0#2298#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2128#2129#0" expanded="false" />
+            <element signature="e#2142#2143#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1615,7 +1622,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#0#2298#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2128#2129#0" expanded="false" />
+            <element signature="e#2142#2143#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1667,7 +1679,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#0#2298#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2128#2129#0" expanded="false" />
+            <element signature="e#2142#2143#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1853,7 +1870,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#0#2298#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2128#2129#0" expanded="false" />
+            <element signature="e#2142#2143#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1887,16 +1909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/AuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/model/OutgoingPayload.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3181818">
@@ -1915,14 +1927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/support/BaseUrlHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1933,11 +1937,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/GeneralClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72727275">
+        <state vertical-scroll-proportion="0.0">
           <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/controllers/AuthenticationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swiftpot/projectuknown/ProjectUknownApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36461127">
+          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
