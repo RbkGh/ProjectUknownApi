@@ -28,8 +28,8 @@ public class SignUpGeneralUserLogic {
                                                                              signUpRequest.getPassWord());
         generalUserDocEntity.setActivated(false);
 
-        generalUserDocEntityRepository.save(generalUserDocEntity);
-        SuccessfulOutgoingPayload successfulOutgoingPayload = new SuccessfulOutgoingPayload(null);
+        GeneralUserDocEntity savedGeneralUserDocEntity = generalUserDocEntityRepository.save(generalUserDocEntity);
+        SuccessfulOutgoingPayload successfulOutgoingPayload = new SuccessfulOutgoingPayload(savedGeneralUserDocEntity);
 
         return successfulOutgoingPayload;
     }

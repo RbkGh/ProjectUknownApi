@@ -1,5 +1,6 @@
 package com.swiftpot.projectuknown.filter;
 
+import com.swiftpot.projectuknown.model.Unsuccessful401OutgoingPayload;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
@@ -29,7 +30,8 @@ public class JwtFilter extends GenericFilterBean {
 
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new ServletException("Missing or invalid Authorization header.");
+            //throw new Unsuccessful401OutgoingPayload(null);
+            throw new ServletException("Missing or invalid Authorization header...");
         }
 
         final String token = authHeader.substring(7); // The part after "Bearer "

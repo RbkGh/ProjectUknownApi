@@ -10,7 +10,7 @@ public class GeneralUserSignUpRequest {
 
     private String lastName;
 
-    private Long phoneNumber;
+    private int phoneNumber;
 
     private String passWord;
 
@@ -31,11 +31,11 @@ public class GeneralUserSignUpRequest {
         this.lastName = lastName;
     }
 
-    public Long getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

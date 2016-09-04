@@ -13,32 +13,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "GeneralUserDoc")
 public class GeneralUserDocEntity {
 
-    private Long id;
 
     private String firstName;
 
     private String lastName;
 
-    private Long phoneNumber;
+    private int phoneNumber;
 
     private String passWord;
 
     private Boolean activated;
 
-    public GeneralUserDocEntity(String firstName, String lastName, Long phoneNumber, String passWord) {
+    public GeneralUserDocEntity(String firstName, String lastName, int phoneNumber, String passWord) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.passWord = passWord;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -56,11 +48,11 @@ public class GeneralUserDocEntity {
         this.lastName = lastName;
     }
 
-    public Long getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
