@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Component
 public class OutgoingPayload {
 
-	private String status;
-	private String message;
-	private Object responseObject;
+	public String status;
+	public String message;
+	public Object responseObject;
 	public String getStatus() {
 		return status;
 	}

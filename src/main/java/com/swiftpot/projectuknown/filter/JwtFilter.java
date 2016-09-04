@@ -3,6 +3,7 @@ package com.swiftpot.projectuknown.filter;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -17,6 +18,7 @@ import java.io.IOException;
  *         <Rodney Kwabena Boachie at rbk.unlimited@gmail.com> on
  *         02-Sep-16
  */
+
 public class JwtFilter extends GenericFilterBean {
 
     @Override

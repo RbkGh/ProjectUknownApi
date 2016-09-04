@@ -20,7 +20,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/classes/main" />
     <output-test url="file://$MODULE_DIR$/build/classes/test" />
     <exclude-output />
@@ -32,7 +32,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.4.0.RELEASE" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.5.4" level="project" />
@@ -92,5 +92,7 @@
     <orderEntry type="library" name="Gradle: io.jsonwebtoken:jjwt:0.6.0" level="project" />
     <orderEntry type="library" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-core:4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.mongodb:mongo-java-driver:3.2.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
   </component>
 </module>

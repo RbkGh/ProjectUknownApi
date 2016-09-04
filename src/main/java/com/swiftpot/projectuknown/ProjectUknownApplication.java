@@ -5,7 +5,6 @@ import com.swiftpot.projectuknown.support.BaseUrlHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.TypeExcludeFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
@@ -29,14 +28,15 @@ public class ProjectUknownApplication extends SpringBootServletInitializer {
 		return application.sources(ProjectUknownApplication.class);
 	}
 
-	@Bean
-	public FilterRegistrationBean jwtFilter(){
-		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-		registrationBean.setFilter(new JwtFilter());
-		registrationBean.addUrlPatterns(BaseUrlHolder.BASE_URL_MAIN_ENTRY_ENDPOINT+"/*");
-		TypeExcludeFilter typeExcludeFilter = new TypeExcludeFilter();
-
-
-		return registrationBean;
-	}
+//	@Bean
+//	public FilterRegistrationBean jwtFilter(){
+//		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//		registrationBean.setFilter(new JwtFilter());
+//		registrationBean.addUrlPatterns(BaseUrlHolder.BASE_URL_SECURED_ENDPOINT +"/*");
+//
+//
+//
+//
+//		return registrationBean;
+//	}
 }
