@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface GeneralUserDocEntityRepository extends CrudRepository<GeneralUserDocEntity,Long> {
-    public GeneralUserDocEntity findByPhoneNumberAndPassWord(int phoneNumber,String passWord);
+     GeneralUserDocEntity findByPhoneNumberAndPassWord(int phoneNumber,String passWord);
 }

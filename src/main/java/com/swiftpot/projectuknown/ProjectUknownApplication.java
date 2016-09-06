@@ -4,14 +4,15 @@ import com.swiftpot.projectuknown.filter.JwtFilter;
 import com.swiftpot.projectuknown.support.BaseUrlHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@SpringBootApplication
+@EnableMongoRepositories
 public class ProjectUknownApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

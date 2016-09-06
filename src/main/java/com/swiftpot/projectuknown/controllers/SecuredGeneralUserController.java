@@ -24,6 +24,8 @@ public class SecuredGeneralUserController {
         OutgoingPayload outgoingPayload = new OutgoingPayload();
         outgoingPayload.setMessage("search started");
         outgoingPayload.setStatus("00");
+        outgoingPayload.setResponseObject(userLoginRequest);
+
         return outgoingPayload;
     }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletException;
 
@@ -19,7 +20,10 @@ import javax.servlet.ServletException;
  *         <Rodney Kwabena Boachie at rbk.unlimited@gmail.com> on
  *         02-Sep-16
  */
+
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @RestController
+@RequestMapping("")
 public class UnsecuredGeneralUserController {
 
     @Autowired
