@@ -4,10 +4,10 @@ import com.swiftpot.projectuknown.businesslogic.BusinessOrServiceEntityLogic;
 import com.swiftpot.projectuknown.model.AddBusinessOrServiceRequest;
 import com.swiftpot.projectuknown.model.OutgoingPayload;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletException;
 
 /**
  * @author Ace Programmer Rbk
@@ -16,14 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @RestController
-@RequestMapping("/api/vi/business")
+@RequestMapping("/api/v1/business")
 public class BusinessOrServiceEntityController {
 
     @Autowired
     BusinessOrServiceEntityLogic businessOrServiceEntityLogic;
 
-    @RequestMapping(path = "/{userName}")
-    public OutgoingPayload addBusinessOrService(@PathVariable String userName ,@RequestBody AddBusinessOrServiceRequest addBusinessOrServiceRequest){
-        return businessOrServiceEntityLogic.addBusinessOrService(userName,addBusinessOrServiceRequest);
+    @RequestMapping(path = "/{id}",method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public OutgoingPayload addBusinessOrService
+            (@PathVariable String id ,@RequestBody AddBusinessOrServiceRequest addBusinessOrServiceRequest)throws ServletException{
+
+        return businessOrServiceEntityLogic.addBusinessOrService(id,addBusinessOrServiceRequest);
     }
 }

@@ -11,6 +11,7 @@ public class BusinessFineLocation {
 
     public String latitude;
 
+    public BusinessFineLocation(){}
 
     public BusinessFineLocation(String longitude, String latitude) {
         this.longitude = longitude;

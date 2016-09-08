@@ -1,6 +1,7 @@
 package com.swiftpot.projectuknown.businesslogic;
 
 import com.swiftpot.projectuknown.db.model.GeneralUserDocEntity;
+import com.swiftpot.projectuknown.model.CreatedIdForOutgoingPayload;
 import com.swiftpot.projectuknown.model.GeneralUserSignUpRequest;
 import com.swiftpot.projectuknown.model.OutgoingPayload;
 import com.swiftpot.projectuknown.model.SuccessfulOutgoingPayload;
@@ -24,7 +25,7 @@ public class SignUpGeneralUserLogic {
 
 
     public OutgoingPayload signUpGeneralUser(GeneralUserSignUpRequest signUpRequest){
-        System.out.println("Request came name= "+signUpRequest.getFirstName());
+        System.out.println("Request came name= " + signUpRequest.getFirstName());
         GeneralUserDocEntity generalUserDocEntity = new GeneralUserDocEntity(signUpRequest.getFirstName(),
                                                                              signUpRequest.getLastName(),
                                                                              signUpRequest.getPhoneNumber(),
@@ -32,7 +33,8 @@ public class SignUpGeneralUserLogic {
         generalUserDocEntity.setActivated(false);
 
         GeneralUserDocEntity savedGeneralUserDocEntity = generalUserDocEntityRepository.save(generalUserDocEntity);
-        SuccessfulOutgoingPayload successfulOutgoingPayload = new SuccessfulOutgoingPayload(savedGeneralUserDocEntity);
+
+        SuccessfulOutgoingPayload successfulOutgoingPayload = new SuccessfulOutgoingPayload(new CreatedIdForOutgoingPayload(savedGeneralUserDocEntity.getId()));
 
         return successfulOutgoingPayload;
     }

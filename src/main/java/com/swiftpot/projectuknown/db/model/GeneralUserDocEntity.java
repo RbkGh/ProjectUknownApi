@@ -1,9 +1,10 @@
 package com.swiftpot.projectuknown.db.model;
 
-import com.swiftpot.projectuknown.ProjectUknownApplication;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.swiftpot.projectuknown.model.AddBusinessOrServiceRequest;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
 
 /**
  * @author Ace Programmer Rbk
@@ -13,24 +14,37 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "GeneralUserDoc")
 public class GeneralUserDocEntity {
 
+    @Id
+    private String id;
 
     private String firstName;
 
     private String lastName;
 
-    private int phoneNumber;
+    private String phoneNumber;
 
     private String passWord;
 
     private Boolean activated;
 
-    public GeneralUserDocEntity(String firstName, String lastName, int phoneNumber, String passWord) {
+    private ArrayList<AddBusinessOrServiceRequest> businessList;
+
+    public GeneralUserDocEntity(){}
+
+    public GeneralUserDocEntity(String firstName, String lastName, String phoneNumber, String passWord) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.passWord = passWord;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -48,11 +62,11 @@ public class GeneralUserDocEntity {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -70,5 +84,13 @@ public class GeneralUserDocEntity {
 
     public void setActivated(Boolean activated) {
         this.activated = activated;
+    }
+
+    public ArrayList<AddBusinessOrServiceRequest> getBusinessList() {
+        return businessList;
+    }
+
+    public void setBusinessList(ArrayList<AddBusinessOrServiceRequest> businessList) {
+        this.businessList = businessList;
     }
 }

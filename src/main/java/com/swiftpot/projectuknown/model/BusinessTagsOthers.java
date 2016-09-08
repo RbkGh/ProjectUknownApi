@@ -9,6 +9,7 @@ public class BusinessTagsOthers {
 
     String url;
 
+    public BusinessTagsOthers(){}
     public BusinessTagsOthers(String url) {
         this.url = url;
     }
