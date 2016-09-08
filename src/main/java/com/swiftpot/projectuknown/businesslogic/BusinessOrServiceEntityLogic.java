@@ -38,7 +38,7 @@ public class BusinessOrServiceEntityLogic {
             GeneralUserDocEntity generalUserDocEntity = addOrUpdateBusinessToUserAccount(findUserDocEntityById(id),addBusinessOrServiceRequest);
             outgoingPayload = new SuccessfulOutgoingPayload(generalUserDocEntity);
         } else {
-            outgoingPayload = new ErrorOutgoingPayload(null,"Incorrect id provided");
+            outgoingPayload = new ErrorOutgoingPayload(null,"Incorrect id provided,user Account does not exist");
         }
 
 

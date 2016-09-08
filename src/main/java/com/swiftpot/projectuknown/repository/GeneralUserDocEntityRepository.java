@@ -12,7 +12,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface GeneralUserDocEntityRepository extends MongoRepository<GeneralUserDocEntity,Long> {
-     GeneralUserDocEntity findByPhoneNumberAndPassWord(int phoneNumber,String passWord);
+     GeneralUserDocEntity findByPhoneNumberAndPassWord(String phoneNumber,String passWord);
      GeneralUserDocEntity findById(String id);
+     GeneralUserDocEntity findByPhoneNumber(String phoneNumber);
 
 }

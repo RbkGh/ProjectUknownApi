@@ -24,13 +24,13 @@ public class SignUpGeneralUserLogic {
 
 
 
-    public OutgoingPayload signUpGeneralUser(GeneralUserSignUpRequest signUpRequest){
+    public OutgoingPayload updateGeneralUser(String id,GeneralUserSignUpRequest signUpRequest){
         System.out.println("Request came name= " + signUpRequest.getFirstName());
         GeneralUserDocEntity generalUserDocEntity = new GeneralUserDocEntity(signUpRequest.getFirstName(),
                                                                              signUpRequest.getLastName(),
                                                                              signUpRequest.getPhoneNumber(),
                                                                              signUpRequest.getPassWord());
-        generalUserDocEntity.setActivated(false);
+        generalUserDocEntity.setId(id);
 
         GeneralUserDocEntity savedGeneralUserDocEntity = generalUserDocEntityRepository.save(generalUserDocEntity);
 

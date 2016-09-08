@@ -32,6 +32,10 @@ configurations {
 }
 
 dependencies {
+	//include custom jars
+	compile fileTree(dir: '/src/main/resources/static', include: ['*.jar'])
+
+
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.data:spring-data-mongodb:1.9.2.RELEASE')

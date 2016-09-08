@@ -55,7 +55,7 @@ public class LoginGeneralUserLogic {
         boolean isUserCredentialsOk = true;
 
         GeneralUserDocEntity generalUserDocEntity = generalUserDocEntityRepository.findByPhoneNumberAndPassWord
-                            (Integer.valueOf(userLoginRequest.getUserName()),userLoginRequest.getPassWord());
+                            (userLoginRequest.getUserName(),userLoginRequest.getPassWord());
         log.info("findUserNameAndPassword {}",new Gson().toJson(generalUserDocEntity));
 
         if (generalUserDocEntity == null) {

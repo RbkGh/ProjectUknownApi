@@ -1,18 +1,15 @@
 package com.swiftpot.projectuknown.db.model;
 
-import com.swiftpot.projectuknown.model.AddBusinessOrServiceRequest;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.ArrayList;
 
 /**
  * @author Ace Programmer Rbk
  *         <Rodney Kwabena Boachie at [rodney@swiftpot.com,rbk.unlimited@gmail.com]> on
- *         03-Sep-16 @ 7:06 PM
+ *         08-Sep-16 @ 10:25 AM
  */
-@Document(collection = "GeneralUserDoc")
-public class GeneralUserDocEntity {
+@Document(collection = "GeneralUnactivatedUserDoc")
+public class GeneralUnactivatedUserDocEntity {
 
     @Id
     private String id;
@@ -25,11 +22,15 @@ public class GeneralUserDocEntity {
 
     private String passWord;
 
-    private ArrayList<AddBusinessOrServiceRequest> businessList;
+    /**
+     * send sms passcode for user to reinput to activate account after registration
+     */
+    private String passCode;
 
-    public GeneralUserDocEntity(){}
+    public GeneralUnactivatedUserDocEntity() {
+    }
 
-    public GeneralUserDocEntity(String firstName, String lastName, String phoneNumber, String passWord) {
+    public GeneralUnactivatedUserDocEntity(String firstName, String lastName, String phoneNumber, String passWord) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -76,12 +77,11 @@ public class GeneralUserDocEntity {
         this.passWord = passWord;
     }
 
-
-    public ArrayList<AddBusinessOrServiceRequest> getBusinessList() {
-        return businessList;
+    public String getPassCode() {
+        return passCode;
     }
 
-    public void setBusinessList(ArrayList<AddBusinessOrServiceRequest> businessList) {
-        this.businessList = businessList;
+    public void setPassCode(String passCode) {
+        this.passCode = passCode;
     }
 }
