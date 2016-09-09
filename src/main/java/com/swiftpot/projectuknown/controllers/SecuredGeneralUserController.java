@@ -1,8 +1,9 @@
 package com.swiftpot.projectuknown.controllers;
 
+import com.swiftpot.projectuknown.businesslogic.SecuredGeneralUserLogic;
+import com.swiftpot.projectuknown.model.GeneralUserSearchRequest;
 import com.swiftpot.projectuknown.model.OutgoingPayload;
-import com.swiftpot.projectuknown.model.UserLoginRequest;
-import com.swiftpot.projectuknown.support.BaseUrlHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
  *         <Rodney Kwabena Boachie at rbk.unlimited@gmail.com> on
  *         03-Sep-16
  */
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @RestController
 @RequestMapping("api/v1")
 public class SecuredGeneralUserController {
 
-    @RequestMapping(value = "/search", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public OutgoingPayload loginRequest( @RequestBody UserLoginRequest userLoginRequest){
+    @Autowired
+    SecuredGeneralUserLogic securedGeneralUserLogic;
 
-        OutgoingPayload outgoingPayload = new OutgoingPayload();
-        outgoingPayload.setMessage("search started");
-        outgoingPayload.setStatus("00");
-        outgoingPayload.setResponseObject(userLoginRequest);
+    @RequestMapping(value = "/search", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public OutgoingPayload generalUserSearchRequestHandler(@RequestBody GeneralUserSearchRequest generalUserSearchRequest) {
 
-        return outgoingPayload;
+        return securedGeneralUserLogic.generalUserSearchRequestHandler(generalUserSearchRequest);
     }
 
 

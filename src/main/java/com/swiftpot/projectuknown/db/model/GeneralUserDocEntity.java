@@ -27,7 +27,8 @@ public class GeneralUserDocEntity {
 
     private ArrayList<AddBusinessOrServiceRequest> businessList;
 
-    public GeneralUserDocEntity(){}
+    public GeneralUserDocEntity() {
+    }
 
     public GeneralUserDocEntity(String firstName, String lastName, String phoneNumber, String passWord) {
         this.firstName = firstName;

@@ -33,7 +33,10 @@ public class AddBusinessOrServiceRequest {
 
     public List<BusinessTagsOthers> bizTagsOthers;
 
-    public BusinessFineLocation bizFineLocation;
+    /**
+     * must be in order of longitude,latitude==a standardized convention,NOTE!!!
+     */
+    public String[] bizFineLocation;
 
     public String bizCoarseLocation;
 
@@ -137,11 +140,11 @@ public class AddBusinessOrServiceRequest {
         this.bizTagsOthers = bizTagsOthers;
     }
 
-    public BusinessFineLocation getBizFineLocation() {
+    public String[] getBizFineLocation() {
         return bizFineLocation;
     }
 
-    public void setBizFineLocation(BusinessFineLocation bizFineLocation) {
+    public void setBizFineLocation(String[] bizFineLocation) {
         this.bizFineLocation = bizFineLocation;
     }
 

@@ -56,7 +56,7 @@ public class SignupGeneralUnactivatedUserLogic {
     }
 
     public OutgoingPayload requestPassCode(String id) {
-        log.info("Incoming id ="+id);
+        log.info("Incoming id =" + id);
         OutgoingPayload outgoingPayload;
 
         if (isUserIdExistentInGeneralUnactivatedDoc(id) == true) {
@@ -65,7 +65,7 @@ public class SignupGeneralUnactivatedUserLogic {
             String generatedPassCode = generateFourDigitPassCode();
             String recipientPhoneNumber = generalUnactivatedUserDocEntity.getPhoneNumber();
             SMSSenderRequest smsSenderRequest = new SMSSenderRequest(recipientPhoneNumber,
-                    "Passcode = " + generatedPassCode+" Test,Ignore----Sent with SwiftAlertApi(www.swiftpot.com/swiftalert)");
+                    "Passcode = " + generatedPassCode + " Test,Ignore----Sent with SwiftAlertApi(www.swiftpot.com/swiftalert)");
             if (smsSenderSwiftAlert.isMessageSendingSuccessful(smsSenderRequest) == true) {
                 //update field passCode  with passCode sent to user's phone,user will be activated based on generatedPasscode he prevents
                 generalUnactivatedUserDocEntity.setPassCode(generatedPassCode);
@@ -87,14 +87,14 @@ public class SignupGeneralUnactivatedUserLogic {
     }
 
     public OutgoingPayload activateUser(String id, String passCode) {
-        OutgoingPayload outgoingPayload = new OutgoingPayload();
+        OutgoingPayload outgoingPayload;
         if (isUserIdExistentInGeneralUnactivatedDoc(id) == true) {
             GeneralUnactivatedUserDocEntity generalUnactivatedUserDocEntity = generalUnactivatedUserDocEntityRepository.findOne(id);
 
 
             //check if passcode tallies with db version
             String passCodeDBVersion = generalUnactivatedUserDocEntity.getPassCode();
-            log.info("PassCode From user = {},PassCode From DB = {}",passCode,passCodeDBVersion);
+            log.info("PassCode From user = {},PassCode From DB = {}", passCode, passCodeDBVersion);
             if (passCode.equalsIgnoreCase(passCodeDBVersion)) {
 
 
@@ -107,7 +107,7 @@ public class SignupGeneralUnactivatedUserLogic {
 
                 //now insert user data into original document,but wait,maybe user is already activated in original doc,let's check that first
                 GeneralUserDocEntity generalUserDocEntityExistence = generalUserDocEntityRepository.findByPhoneNumber(phoneNumberOfUserRequestingToBeActivated);
-                log.info("GeneralUserDocEntity = {}",generalUserDocEntityExistence);
+                log.info("GeneralUserDocEntity = {}", generalUserDocEntityExistence);
                 if (generalUserDocEntityExistence == null) {
                     //does not exist,we can now safely save to original document
                     GeneralUserDocEntity generalUserDocEntityValidatedPhoneNumber = new GeneralUserDocEntity();
@@ -121,9 +121,9 @@ public class SignupGeneralUnactivatedUserLogic {
                     String idToReturnToUser = generalUserDocEntityResponseFromDB.getId();
                     CreatedIdForOutgoingPayload createdIdForOutgoingPayload = new CreatedIdForOutgoingPayload(idToReturnToUser);
                     outgoingPayload = new SuccessfulOutgoingPayload("Activated User Successfully", createdIdForOutgoingPayload);
-                }else{
+                } else {
                     //User Exists in Main Original GeneralUserDocEntity already
-                    outgoingPayload = new ErrorOutgoingPayload(null,"User Exists Already Or Activated already");
+                    outgoingPayload = new ErrorOutgoingPayload(null, "User Exists Already Or Activated already");
                 }
 
 
