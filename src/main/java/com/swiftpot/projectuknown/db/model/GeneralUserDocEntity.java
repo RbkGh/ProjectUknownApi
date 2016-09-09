@@ -1,7 +1,7 @@
 package com.swiftpot.projectuknown.db.model;
 
-import com.swiftpot.projectuknown.model.AddBusinessOrServiceRequest;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -25,7 +25,8 @@ public class GeneralUserDocEntity {
 
     private String passWord;
 
-    private ArrayList<AddBusinessOrServiceRequest> businessList;
+    @DBRef
+    private ArrayList<BusinessOrServiceDocEntity> businessList;
 
     public GeneralUserDocEntity() {
     }
@@ -78,11 +79,11 @@ public class GeneralUserDocEntity {
     }
 
 
-    public ArrayList<AddBusinessOrServiceRequest> getBusinessList() {
+    public ArrayList<BusinessOrServiceDocEntity> getBusinessList() {
         return businessList;
     }
 
-    public void setBusinessList(ArrayList<AddBusinessOrServiceRequest> businessList) {
+    public void setBusinessList(ArrayList<BusinessOrServiceDocEntity> businessList) {
         this.businessList = businessList;
     }
 }

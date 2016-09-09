@@ -9,8 +9,14 @@ public class UserLoginResponse {
 
     String token;
 
+    String userId;
+
     public UserLoginResponse(String token) {
         this.token = token;
+    }
+    public UserLoginResponse(String token,String userId) {
+        this.token = token;
+        this.userId = userId;
     }
 
     public String getToken() {
@@ -19,5 +25,13 @@ public class UserLoginResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

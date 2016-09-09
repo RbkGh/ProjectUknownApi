@@ -1,16 +1,25 @@
-package com.swiftpot.projectuknown.model;
+package com.swiftpot.projectuknown.db.model;
 
+import com.swiftpot.projectuknown.model.BusinessCurrentNumOfEmployeesType;
+import com.swiftpot.projectuknown.model.BusinessFineLocation;
+import com.swiftpot.projectuknown.model.BusinessTagsOthers;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 /**
  * @author Ace Programmer Rbk
  *         <Rodney Kwabena Boachie at [rodney@swiftpot.com,rbk.unlimited@gmail.com]> on
- *         07-Sep-16 @ 7:30 AM
+ *         09-Sep-16 @ 10:47 PM
  */
-public class AddBusinessOrServiceRequest {
+@Document(collection = "BusinessOrServiceDocEntity")
+public class BusinessOrServiceDocEntity {
+
+    @Id
+    private String id;
 
     private String bizName;
 
@@ -39,6 +48,7 @@ public class AddBusinessOrServiceRequest {
     /**
      * must be in order of longitude,latitude==a standardized convention,NOTE!!!
      */
+    @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
     private BusinessFineLocation bizFineLocation;
 
     private String bizCoarseLocation;
@@ -47,7 +57,14 @@ public class AddBusinessOrServiceRequest {
 
     private BusinessCurrentNumOfEmployeesType bizNumOfEmployeesType;
 
-    public AddBusinessOrServiceRequest() {
+    public BusinessOrServiceDocEntity(){}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getBizName() {

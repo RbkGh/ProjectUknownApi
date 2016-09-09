@@ -39,7 +39,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.data:spring-data-mongodb:1.9.2.RELEASE')
-	compile('org.springframework.boot:spring-boot-devtools:1.4.0.RELEASE')
+	//compile('org.springframework.boot:spring-boot-devtools:1.4.0.RELEASE')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 

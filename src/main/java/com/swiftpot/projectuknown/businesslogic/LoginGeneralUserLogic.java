@@ -38,14 +38,12 @@ public class LoginGeneralUserLogic {
             throw new ServletException("Invalid login credentials");
         }
 
-
         UserLoginResponse userLoginResponse = new UserLoginResponse(Jwts.builder().setSubject(userLoginRequest.getUserName())
-                /*.claim("roles", userDb.get(login.name))*/.setIssuedAt(new Date()).claim("myName","Rodney")
+                /*.claim("roles", userDb.get(login.name))*/.setIssuedAt(new Date()).claim("myName", "Rodney")
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact());
+        //serUserId as user will use in subsequent calls
+        userLoginResponse.setUserId(getUserId(userLoginRequest));
         SuccessfulOutgoingPayload successfulOutgoingPayload = new SuccessfulOutgoingPayload(userLoginResponse);
-//        return new LoginResponse(Jwts.builder().setSubject(login.name)
-//                .claim("roles", userDb.get(login.name)).setIssuedAt(new Date())
-//                .signWith(SignatureAlgorithm.HS256, "secretkey").compact());
 
         return successfulOutgoingPayload;
     }
@@ -55,8 +53,8 @@ public class LoginGeneralUserLogic {
         boolean isUserCredentialsOk = true;
 
         GeneralUserDocEntity generalUserDocEntity = generalUserDocEntityRepository.findByPhoneNumberAndPassWord
-                            (userLoginRequest.getUserName(),userLoginRequest.getPassWord());
-        log.info("findUserNameAndPassword {}",new Gson().toJson(generalUserDocEntity));
+                (userLoginRequest.getUserName(), userLoginRequest.getPassWord());
+        log.info("findUserNameAndPassword {}", new Gson().toJson(generalUserDocEntity));
 
         if (generalUserDocEntity == null) {
 
@@ -64,5 +62,11 @@ public class LoginGeneralUserLogic {
         }
 
         return isUserCredentialsOk;
+    }
+
+    private String getUserId(UserLoginRequest userLoginRequest){
+        GeneralUserDocEntity generalUserDocEntity = generalUserDocEntityRepository.findByPhoneNumberAndPassWord
+                (userLoginRequest.getUserName(), userLoginRequest.getPassWord());
+        return generalUserDocEntity.getId();
     }
 }

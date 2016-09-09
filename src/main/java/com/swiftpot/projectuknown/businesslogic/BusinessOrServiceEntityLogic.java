@@ -1,10 +1,10 @@
 package com.swiftpot.projectuknown.businesslogic;
 
+import com.google.gson.Gson;
+import com.swiftpot.projectuknown.db.model.BusinessOrServiceDocEntity;
 import com.swiftpot.projectuknown.db.model.GeneralUserDocEntity;
-import com.swiftpot.projectuknown.model.AddBusinessOrServiceRequest;
-import com.swiftpot.projectuknown.model.ErrorOutgoingPayload;
-import com.swiftpot.projectuknown.model.OutgoingPayload;
-import com.swiftpot.projectuknown.model.SuccessfulOutgoingPayload;
+import com.swiftpot.projectuknown.model.*;
+import com.swiftpot.projectuknown.repository.BusinessOrServiceDocEntityRepository;
 import com.swiftpot.projectuknown.repository.GeneralUserDocEntityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ace Programmer Rbk
  *         <Rodney Kwabena Boachie at [rodney@swiftpot.com,rbk.unlimited@gmail.com]> on
  *         07-Sep-16 @ 8:26 AM
  */
-@SuppressWarnings("ALL")
+
 @Service
 public class BusinessOrServiceEntityLogic {
 
@@ -26,17 +27,17 @@ public class BusinessOrServiceEntityLogic {
 
     @Autowired
     GeneralUserDocEntityRepository generalUserDocEntityRepository;
-
     @Autowired
-    OutgoingPayload outgoingPayload;
+    BusinessOrServiceDocEntityRepository businessOrServiceDocEntityRepository;
+
 
     public OutgoingPayload addBusinessOrService(String id, AddBusinessOrServiceRequest addBusinessOrServiceRequest) {
-
+        OutgoingPayload outgoingPayload;
         log.info("{}",id);
 
         if (isSpecifiedIdExistent(id) == true) {
-            GeneralUserDocEntity generalUserDocEntity = addOrUpdateBusinessToUserAccount(findUserDocEntityById(id),addBusinessOrServiceRequest);
-            outgoingPayload = new SuccessfulOutgoingPayload(generalUserDocEntity);
+            BusinessOrServiceDocEntity businessOrServiceDocEntity = addOrUpdateBusinessToUserAccount(id,addBusinessOrServiceRequest);
+            outgoingPayload = new SuccessfulOutgoingPayload(businessOrServiceDocEntity);
         } else {
             outgoingPayload = new ErrorOutgoingPayload(null,"Incorrect id provided,user Account does not exist");
         }
@@ -51,7 +52,7 @@ public class BusinessOrServiceEntityLogic {
         GeneralUserDocEntity generalUserDocEntityWithSpecifiedId = findUserDocEntityById(id);
 
         if (generalUserDocEntityWithSpecifiedId != null) {
-            log.info("Specified Id Resultant Entity For GeneralUserDocEntity == {}", generalUserDocEntityWithSpecifiedId);
+            log.info("Specified Id Resultant Entity For GeneralUserDocEntity == {}", new Gson().toJson(generalUserDocEntityWithSpecifiedId));
             isSpecifiedIdExistent = true;
 
         }else {
@@ -66,28 +67,57 @@ public class BusinessOrServiceEntityLogic {
         return generalUserDocEntityRepository.findById(id);
     }
 
-    private GeneralUserDocEntity addOrUpdateBusinessToUserAccount(GeneralUserDocEntity generalUserDocEntity,
-                                                                  AddBusinessOrServiceRequest addBusinessOrServiceRequest){
-        GeneralUserDocEntity generalUserDocEntityfinalResponseFromMethod = new GeneralUserDocEntity();
+    /**
+     *
+     * @param id use same id of generalUser to save the business,for business to registered to that user
+     * @param addBusinessOrServiceRequest
+     * @return
+     */
+    private BusinessOrServiceDocEntity addOrUpdateBusinessToUserAccount(String id,AddBusinessOrServiceRequest addBusinessOrServiceRequest){
+        BusinessOrServiceDocEntity businessOrServiceDocEntity = new BusinessOrServiceDocEntity();
 
-        ArrayList<AddBusinessOrServiceRequest> addBusinessOrServiceRequestArrayList = null;
-        addBusinessOrServiceRequestArrayList = generalUserDocEntity.getBusinessList();
+        String bizName                                              = addBusinessOrServiceRequest.getBizName();
+        String bizPhoneNumPrimary                                   = addBusinessOrServiceRequest.getBizPhoneNumPrimary();
+        String[] bizPhoneNumOthers                                  = addBusinessOrServiceRequest.getBizPhoneNumOthers();
+        String bizEmailPrimary                                      = addBusinessOrServiceRequest.getBizEmailPrimary();
+        String bizEmailOthers                                       = addBusinessOrServiceRequest.getBizEmailOthers();
+        String bizWebsite                                           = addBusinessOrServiceRequest.getBizWebsite();
+        String bizAddress                                           = addBusinessOrServiceRequest.getBizAddress();
+        String bizDescription                                       = addBusinessOrServiceRequest.getBizDescription();
+        String bizLogoUrl                                           = addBusinessOrServiceRequest.getBizLogoUrl();
+        String[] bizDescriptionPhotos                               = addBusinessOrServiceRequest.getBizDescriptionPhotos();
+        String[] bizTagPrimary                                      = addBusinessOrServiceRequest.getBizTagPrimary();
+        List<BusinessTagsOthers> bizTagsOthers                      = addBusinessOrServiceRequest.getBizTagsOthers();
+        BusinessFineLocation bizFineLocation                        = addBusinessOrServiceRequest.getBizFineLocation();
+        String bizCoarseLocation                                    = addBusinessOrServiceRequest.getBizCoarseLocation();
+        int bizNumOfEmployees                                       = addBusinessOrServiceRequest.getBizNumOfEmployees();
+        BusinessCurrentNumOfEmployeesType bizNumOfEmployeesType     = addBusinessOrServiceRequest.getBizNumOfEmployeesType();
 
-        if(addBusinessOrServiceRequestArrayList == null || addBusinessOrServiceRequestArrayList.isEmpty()){
-            //initialise array since it's null or empty
-            addBusinessOrServiceRequestArrayList = new ArrayList<>();
 
-            addBusinessOrServiceRequestArrayList.add(addBusinessOrServiceRequest);
-            //set addBusinessOrServiceRequestArrayList to GeneralUserDocEntity and save
-            generalUserDocEntity.setBusinessList(addBusinessOrServiceRequestArrayList);
-            generalUserDocEntityfinalResponseFromMethod = generalUserDocEntityRepository.save(generalUserDocEntity);
-    }else{
-            //add to list straight since its not empty or null and insert to Db
-            addBusinessOrServiceRequestArrayList.add(addBusinessOrServiceRequest);
-            //set addBusinessOrServiceRequestArrayList to GeneralUserDocEntity and save
-            generalUserDocEntity.setBusinessList(addBusinessOrServiceRequestArrayList);
-            generalUserDocEntityfinalResponseFromMethod = generalUserDocEntityRepository.save(generalUserDocEntity);
-        }
-        return generalUserDocEntityfinalResponseFromMethod;
+
+        //save with same id as registered user,very important,for business to be on user's account
+        businessOrServiceDocEntity.setId(id);
+
+
+        businessOrServiceDocEntity.setBizName(bizName);
+        businessOrServiceDocEntity.setBizPhoneNumPrimary(bizPhoneNumPrimary);
+        businessOrServiceDocEntity.setBizPhoneNumOthers(bizPhoneNumOthers);
+        businessOrServiceDocEntity.setBizEmailPrimary(bizEmailPrimary);
+        businessOrServiceDocEntity.setBizEmailOthers(bizEmailOthers);
+        businessOrServiceDocEntity.setBizWebsite(bizWebsite);
+        businessOrServiceDocEntity.setBizAddress(bizAddress);
+        businessOrServiceDocEntity.setBizDescription(bizDescription);
+        businessOrServiceDocEntity.setBizLogoUrl(bizLogoUrl);
+        businessOrServiceDocEntity.setBizDescriptionPhotos(bizDescriptionPhotos);
+        businessOrServiceDocEntity.setBizTagPrimary(bizTagPrimary);
+        businessOrServiceDocEntity.setBizTagsOthers(bizTagsOthers);
+        businessOrServiceDocEntity.setBizFineLocation(bizFineLocation);
+        businessOrServiceDocEntity.setBizCoarseLocation(bizCoarseLocation);
+        businessOrServiceDocEntity.setBizNumOfEmployees(bizNumOfEmployees);
+        businessOrServiceDocEntity.setBizNumOfEmployeesType(bizNumOfEmployeesType);
+
+        BusinessOrServiceDocEntity returnedEntityFromDB = businessOrServiceDocEntityRepository.save(businessOrServiceDocEntity);
+
+        return returnedEntityFromDB;
     }
 }
