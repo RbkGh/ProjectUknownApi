@@ -6,7 +6,9 @@ import com.swiftpot.projectuknown.model.BusinessTagsOthers;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Language;
 
 import java.util.List;
 
@@ -44,6 +46,7 @@ public class BusinessOrServiceDocEntity {
 
     private String[] bizDescriptionPhotos;
 
+    @TextIndexed
     private String[] bizTagPrimary;
 
     private List<BusinessTagsOthers> bizTagsOthers;
