@@ -21,6 +21,9 @@ public class BusinessOrServiceDocEntity {
     @Id
     private String id;
 
+    //set this userId to the unique _id of the main User,in order to query with same id of main account owner
+    private String userId;
+
     private String bizName;
 
     private String bizPhoneNumPrimary;
@@ -58,6 +61,15 @@ public class BusinessOrServiceDocEntity {
     private BusinessCurrentNumOfEmployeesType bizNumOfEmployeesType;
 
     public BusinessOrServiceDocEntity(){}
+
+
+    public String getUserId(){
+        return userId;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
 
     public String getId() {
         return id;

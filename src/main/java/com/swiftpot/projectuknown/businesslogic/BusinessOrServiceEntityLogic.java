@@ -96,8 +96,8 @@ public class BusinessOrServiceEntityLogic {
 
 
         //save with same id as registered user,very important,for business to be on user's account
-        businessOrServiceDocEntity.setId(id);
-
+        //if the same id is set to the _id section,anytime another business is registered in addition,it will replace the existing business,since same id
+        businessOrServiceDocEntity.setUserId(id);
 
         businessOrServiceDocEntity.setBizName(bizName);
         businessOrServiceDocEntity.setBizPhoneNumPrimary(bizPhoneNumPrimary);
