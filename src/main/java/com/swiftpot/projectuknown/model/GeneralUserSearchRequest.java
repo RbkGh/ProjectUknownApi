@@ -7,18 +7,20 @@ package com.swiftpot.projectuknown.model;
  */
 public class GeneralUserSearchRequest {
 
-    private String[] userLocation;
+    private double[] userLocation;
 
     private String searchQuery;
+
+    private double maxDistance;
 
     public GeneralUserSearchRequest() {
     }
 
-    public String[] getUserLocation() {
+    public double[] getUserLocation() {
         return userLocation;
     }
 
-    public void setUserLocation(String[] userLocation) {
+    public void setUserLocation(double[] userLocation) {
         this.userLocation = userLocation;
     }
 
@@ -28,5 +30,13 @@ public class GeneralUserSearchRequest {
 
     public void setSearchQuery(String searchQuery) {
         this.searchQuery = searchQuery;
+    }
+
+    public double getMaxDistance() {
+        return maxDistance;
+    }
+
+    public void setMaxDistance(double maxDistance) {
+        this.maxDistance = maxDistance;
     }
 }

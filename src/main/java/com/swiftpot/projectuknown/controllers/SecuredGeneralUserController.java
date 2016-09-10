@@ -23,7 +23,7 @@ public class SecuredGeneralUserController {
     @Autowired
     SecuredGeneralUserLogic securedGeneralUserLogic;
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/search", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public OutgoingPayload generalUserSearchRequestHandler(@RequestBody GeneralUserSearchRequest generalUserSearchRequest) {
 
         return securedGeneralUserLogic.generalUserSearchRequestHandler(generalUserSearchRequest);
