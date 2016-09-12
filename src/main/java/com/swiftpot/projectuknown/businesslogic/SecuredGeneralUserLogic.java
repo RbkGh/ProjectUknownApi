@@ -33,7 +33,7 @@ public class SecuredGeneralUserLogic {
         double maxDistanceInKM = generalUserSearchRequest.getMaxDistance();
 
 
-        List<BusinessOrServiceDocEntity> businessOrServiceDocEntityList = businessesOrServicesDAO.findBusinessesOrServicesNearSpecificLocation(location, maxDistanceInKM);
+        List<BusinessOrServiceDocEntity> businessOrServiceDocEntityList = businessesOrServicesDAO.findBusinessesUsingSearchQueryAndLocation(location, maxDistanceInKM,generalUserSearchRequest.getSearchQuery());
         OutgoingPayload outgoingPayload ;
 
         if((businessOrServiceDocEntityList.isEmpty()) || (businessOrServiceDocEntityList == null)){

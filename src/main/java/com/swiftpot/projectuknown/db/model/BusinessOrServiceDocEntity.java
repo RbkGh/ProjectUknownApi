@@ -26,6 +26,7 @@ public class BusinessOrServiceDocEntity {
     //set this userId to the unique _id of the main User,in order to query with same id of main account owner
     private String userId;
 
+    @TextIndexed
     private String bizName;
 
     private String bizPhoneNumPrimary;
