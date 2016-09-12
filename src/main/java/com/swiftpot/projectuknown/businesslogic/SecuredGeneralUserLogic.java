@@ -6,6 +6,7 @@ import com.swiftpot.projectuknown.model.OutgoingPayload;
 import com.swiftpot.projectuknown.model.SuccessfulOutgoingPayload;
 import com.swiftpot.projectuknown.repository.BusinessesOrServicesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.GeoResult;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +33,8 @@ public class SecuredGeneralUserLogic {
         Point location = new Point(longitude,latitude);
         double maxDistanceInKM = generalUserSearchRequest.getMaxDistance();
 
-
-        List<BusinessOrServiceDocEntity> businessOrServiceDocEntityList = businessesOrServicesDAO.findBusinessesUsingSearchQueryAndLocation(location, maxDistanceInKM,generalUserSearchRequest.getSearchQuery());
+        //We use GeoResult because we want to add each distance from businessLocation from user's location,also to not worry about deserializing into different object for responseObject
+        List<GeoResult<BusinessOrServiceDocEntity>> businessOrServiceDocEntityList = businessesOrServicesDAO.findBusinessesUsingSearchQueryAndLocation(location, maxDistanceInKM,generalUserSearchRequest.getSearchQuery());
         OutgoingPayload outgoingPayload ;
 
         if((businessOrServiceDocEntityList.isEmpty()) || (businessOrServiceDocEntityList == null)){

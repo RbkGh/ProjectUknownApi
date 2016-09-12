@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Ace Programmer Rbk
@@ -36,7 +37,7 @@ public class BusinessesOrServicesDAO {
 
 
 
-    public List<BusinessOrServiceDocEntity> findBusinessesUsingSearchQueryAndLocation(Point location,double maxDistanceInKM,String searchQuery){
+    public List<GeoResult<BusinessOrServiceDocEntity>> findBusinessesUsingSearchQueryAndLocation(Point location,double maxDistanceInKM,String searchQuery){
         //List<BusinessOrServiceDocEntity> businessOrServiceDocEntityList = new ArrayList<>(0);
 
         String[] searchQueryDetokenizedArray = searchQuery.trim().split("\\s+"); //regexp equivalent for [ \\t\\n\\x0B\\f\\r],dodge all whitespaces
@@ -45,8 +46,11 @@ public class BusinessesOrServicesDAO {
 
         Query query = TextQuery.queryText(new TextCriteria().matchingAny(searchQueryDetokenizedArray)).sortByScore();
 
-        List<BusinessOrServiceDocEntity> businessOrServiceDocEntitySearchQueryResultList = new ArrayList<>(0);
-        List<BusinessOrServiceDocEntity> businessOrServiceDocEntityNearLocationResultList = new ArrayList<>(0);
+        List<BusinessOrServiceDocEntity> businessOrServiceDocEntitySearchQueryResultList;
+        List<GeoResult<BusinessOrServiceDocEntity>> businessOrServiceDocEntityNearLocationResultList;
+
+        List<GeoResult<BusinessOrServiceDocEntity>> businessOrServiceDocEntityFinallySortedList = new ArrayList<>(0);
+
 
         businessOrServiceDocEntitySearchQueryResultList = mongoTemplate.find(query, BusinessOrServiceDocEntity.class);
 
@@ -58,33 +62,46 @@ public class BusinessesOrServicesDAO {
         }else{
             for(BusinessOrServiceDocEntity businessOrServiceDocEntitySearch : businessOrServiceDocEntitySearchQueryResultList){
 
+
                 //search all location entities to get a match
-               for(BusinessOrServiceDocEntity businessOrServiceDocEntityLocation : businessOrServiceDocEntityNearLocationResultList){
-                   if(businessOrServiceDocEntitySearch.getId() == businessOrServiceDocEntityLocation.getId()){
+               for(GeoResult<BusinessOrServiceDocEntity> businessOrServiceDocEntityLocation : businessOrServiceDocEntityNearLocationResultList){
+                   if(businessOrServiceDocEntitySearch.getId().equalsIgnoreCase(businessOrServiceDocEntityLocation.getContent().getId())){
                        //present in both entities,do not remove from List
+                       //add to new Fresh List since removing in else statement will lead to java.util.ConcurrentModificationException....
+                       businessOrServiceDocEntityFinallySortedList.add(businessOrServiceDocEntityLocation);
                    }else{
                        //remove from SearchQueryList as the location is not within what user requested
-                       businessOrServiceDocEntitySearchQueryResultList.remove(businessOrServiceDocEntitySearch);
+                       //do not remove from List as this will lead to java.util.ConcurrentModificationException,since immediately an element is removed from list,the iteration breaks
+                       //Simply put,do not add to finallySortedList instead
+
                    }
 
                }
             }
         }
 
-        return businessOrServiceDocEntitySearchQueryResultList;
+        log.info("\n\n\nSearchQueryResultList ==== {},\n\n\nNearLocationResultList ==== {},\n\n\nFinallySortedResultList ==== {}",
+                gson.toJson(businessOrServiceDocEntitySearchQueryResultList),
+                gson.toJson(businessOrServiceDocEntityNearLocationResultList),
+                gson.toJson(businessOrServiceDocEntityFinallySortedList));
+
+        return businessOrServiceDocEntityFinallySortedList;
     }
 
-    public List<BusinessOrServiceDocEntity> findBusinessesOrServicesNearSpecificLocation(Point location,double maxDistanceInKM){
+    public List<GeoResult<BusinessOrServiceDocEntity>> findBusinessesOrServicesNearSpecificLocation(Point location,double maxDistanceInKM){
         //Point location = new Point(-73.99171, 40.738868);
         NearQuery query = NearQuery.near(location).maxDistance(new Distance(maxDistanceInKM, Metrics.KILOMETERS));
 
         GeoResults<BusinessOrServiceDocEntity> geoResults = mongoOperations.geoNear(query, BusinessOrServiceDocEntity.class);
 
-        List<BusinessOrServiceDocEntity> businessOrServiceDocEntityList = new ArrayList<>(0);
+
+        List<GeoResult<BusinessOrServiceDocEntity>> geoResultArrayList = new ArrayList<>(0);
+
         if (!geoResults.getContent().isEmpty()) {
             int i = 0;
             for (GeoResult<BusinessOrServiceDocEntity> businessOrServiceDocEntity : geoResults) {
-                businessOrServiceDocEntityList.add(businessOrServiceDocEntity.getContent());
+
+                geoResultArrayList.add(businessOrServiceDocEntity);
                 log.info("GeoResult Number {},{}\n", i++, gson.toJson(businessOrServiceDocEntity));
 
             }
@@ -93,6 +110,6 @@ public class BusinessesOrServicesDAO {
             //add nothing to list since its empty,return empty list
         }
 
-        return businessOrServiceDocEntityList;
+        return geoResultArrayList;
     }
 }
